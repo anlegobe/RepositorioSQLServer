@@ -1,0 +1,27 @@
+Orden de instalación
+
+BD\Scripts\CreateTables.sql
+BD\Scripts\InsertsPrueba.sql
+BD\Triggers\trg_AuditoriaEmpleado_Delete.sql
+BD\Triggers\trg_AuditoriaEmpleado_Insert.sql
+BD\Triggers\trg_AuditoriaEmpleado_Update.sql
+BD\Triggers\trg_AuditoriaPago_Delete.sql
+BD\Triggers\trg_AuditoriaPago_Insert.sql
+BD\Triggers\trg_AuditoriaPago_Update.sql
+BD\Procedimientos\1. ObtenerPermisosPorUsuario.sql
+BD\Procedimientos\2. ObtenerCamposYTablaPorRol.sql
+BD\Procedimientos\3 EjecutarConsultaPorRolYTabla.sql
+BD\Procedimientos\4. EjecutarDDL.sql
+BD\Procedimientos\6 sp_GenerarCSV_ReporteNominaPorEmpleado.sql
+BD\Procedimientos\7 sp_GenerarCSV_ReporteNominaPorDepartamento.sql
+
+Ejecutar comandos com administrador de la bd (para ejercicio de generación de reportes)
+
+-- Habilitar opciones avanzadas
+EXEC sp_configure 'show advanced options', 1;  
+RECONFIGURE;  
+
+-- Habilitar xp_cmdshell
+EXEC sp_configure 'xp_cmdshell', 1;  
+RECONFIGURE;
+
