@@ -1,0 +1,67 @@
+Table Rol {
+  RolID int [pk, increment]
+  NombreRol varchar(100)
+}
+
+Table Usuario {
+  UsuarioID int [pk, increment]
+  NombreUsuario varchar(100)
+  estado varchar(10) // ACTIVO o INACTIVO
+  documento varchar(50)
+  email varchar(100)
+  password varchar(100)
+  fechaCreacion date
+  fechaCambioEstado date
+}
+
+Table Departamento {
+  DepartamentoID int [pk]
+  Nombre varchar(100)
+}
+
+Table PeriodoPago {
+  PeriodoID int [pk]
+  FechaInicio date
+  FechaFin date
+}
+
+Table Tabla {
+  TablaID int [pk, increment]
+  NombreTabla varchar(100)
+  NombreCampo varchar(100)
+  TipoDato varchar(50)
+  Orden int
+  Note: "UNIQUE (NombreTabla, NombreCampo)"
+}
+
+// ========================
+// Tablas dependientes
+// ========================
+
+Table Empleado {
+  EmpleadoID int [pk]
+  Nombre varchar(100)
+  DepartamentoID int [Ref: > Departamento.DepartamentoID]
+  
+}
+
+Table AsignacionRol {
+  UsuarioID int [pk, ref: > Usuario.UsuarioID]
+  RolID int [pk, ref: > Rol.RolID]
+}
+
+Table Pago {
+  PagoID int [pk]
+  EmpleadoID int [ref: > Empleado.EmpleadoID]
+  PeriodoID int [Ref:  > PeriodoPago.PeriodoID]
+  Monto decimal(18,2) 
+}
+
+Table Permiso {
+  PermisoID int [pk, increment]
+  RolID int [Ref: > Rol.RolID]
+  NombreTabla varchar(100)
+  FiltroCondicion varchar
+  Permiso varchar(10)
+  Note: "UNIQUE (RolID, NombreTabla)"
+}
